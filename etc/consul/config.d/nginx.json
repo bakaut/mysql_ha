@@ -1,0 +1,22 @@
+{
+  "service": {
+    "name": "nginx",
+    "tags": ["primary"],
+    "address": "",
+    "meta": {
+      "meta": "nginx"
+    },
+    "port": 80,
+    "enable_tag_override": false,
+    "checks": [
+      {
+        "args": ["/bin/bash", "exit", "3"],
+        "interval": "10s"
+      }
+    ],
+    "weights": {
+      "passing": 3,
+      "warning": 2
+    }
+  }
+}
