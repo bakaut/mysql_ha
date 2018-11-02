@@ -1,0 +1,26 @@
+{
+  "datacenter": "m1",
+  "log_level": "INFO",
+  "node_name": "consul2",
+  "server": true,
+  "ui": true,
+  "bootstrap": false,
+  "client_addr": "0.0.0.0",
+  "advertise_addr": "192.168.1.47",
+  "recursors" : [ "192.168.1.1" ],
+  "ports" : {
+      "dns" : 53
+  },
+  "dns_config": {
+    "only_passing": true
+  },
+  "encrypt": "sTEJn9Q3liF6p0a8k76ZRQ==",
+  "enable_script_checks": true,
+  "watches": [
+        {
+        "type": "service",
+        "service": "nginx",
+        "args": ["/usr/bin/touch", "/tmp/nginx_stop.log" ]
+        }
+   ]
+}
