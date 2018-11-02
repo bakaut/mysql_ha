@@ -16,6 +16,9 @@
   },
   "encrypt": "sTEJn9Q3liF6p0a8k76ZRQ==",
   "enable_script_checks": true,
+   "performance": {
+    "raft_multiplier": 1
+  },
   "watches": [
         {
         "type": "service",
