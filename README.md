@@ -11,7 +11,7 @@ ProxySql (for load balancing)
 Keepalived (for failover swich)
 
 
-Consul (for failover swich, promote host, add host,remove host,make master,make slave)
+Consul (for failover swich, promote host, demote host, add host,remove host,make master,make slave, make read\write,make read)
 
 
 
