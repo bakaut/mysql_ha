@@ -5,13 +5,13 @@ Implementetion mysql high availability and/or sharding using:
 Mysql Innodb cluster (mysql group replication)
 
 
-ProxySql
+ProxySql (for load balancing)
 
 
-Keepalived
+Keepalived (for failover swich)
 
 
-Consul
+Consul (for failover swich, promote host, add host,remove host,make master,make slave)
 
 
 
