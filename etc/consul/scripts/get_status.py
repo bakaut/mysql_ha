@@ -1,6 +1,7 @@
 import json,socket,time,sys
 
 #Постучатся по двум сокету к други мерверам. Первый кто ответить использовать
+#Список онлайн серверов из consul
 try:
 
     cl = dba.get_cluster('clusterDev')
