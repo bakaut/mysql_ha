@@ -43,13 +43,13 @@ for hosts in cl.status().items()[1][1]['topology'].values():
         except Exception:
                try:
                   print "Try to  rejoin " + hosts['address']
-                  #cl.remove_instance(hosts['address'])
-                  #cl.add_instance(hosts['address'])
+                  #cl.remove_instance(hosts['address'],{force: true})
+                  #cl.add_instance(hosts['address'],{force: true})
                   cl.rejoin_instance(hosts['address'])
                   print "Rejoin instance " + hosts['address']  + " success"
                   sys.exit(1)
                except Exception:
-                  #cl.rescan() # forse? how yes delete
+                  #cl.rescan({force: true}) # forse? how yes delete
                   #cl.add_instance(hosts['address'])
                   print "Rejoin " + hosts['address']  + " failed"
                   sys.exit(2)
