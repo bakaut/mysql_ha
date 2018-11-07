@@ -1,0 +1,62 @@
+# Percona Server template configuration
+
+[mysqld]
+#
+# Remove leading # and set to the amount of RAM for the most important data
+# cache in MySQL. Start at 70% of total RAM for dedicated server, else 10%.
+# innodb_buffer_pool_size = 128M
+#
+# Remove leading # to turn on a very important data integrity option: logging
+# changes to the binary log between backups.
+# log_bin
+#
+# Remove leading # to set options mainly useful for reporting servers.
+# The server defaults are faster for transactions and fast SELECTs.
+# Adjust sizes as needed, experiment to find the optimal values.
+# join_buffer_size = 128M
+# sort_buffer_size = 2M
+# read_rnd_buffer_size = 2M
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+
+server_id=1
+gtid_mode=ON
+enforce_gtid_consistency=ON
+master_info_repository=TABLE
+relay_log_info_repository=TABLE
+binlog_checksum=NONE
+log_slave_updates=ON
+log_bin=binlog
+binlog_format=ROW
+
+# Group replication part
+transaction_write_set_extraction=XXHASH64
+loose-group_replication_group_name = "123c479f-d7fe-11e8-b462-000c2900c892"
+loose-group_replication_start_on_boot = OFF
+loose-group_replication_local_address = "192.168.1.46:33061"
+loose-group_replication_group_seeds = "192.168.1.46:33061,192.168.1.47:33061,192.168.1.48:33061"
+loose-group_replication_bootstrap_group = OFF
+
+super-read-only=on
+
+report-host="consul1.node.m1.consul"
+
+log_error_verbosity=3
+disabled_storage_engines="MyISAM,BLACKHOLE,FEDERATED, ARCHIVE,MEMORY"
+
+group_replication_ssl_mode=REQUIRED
+group_replication_auto_increment_increment=1
+group_replication_unreachable_majority_timeout=20
+#group_replication_transaction_size_limit=37500000
+#group_replication_transaction_size_limit=150000000
+group_replication_group_seeds=<ALL_NODES!>
+group_replication_single_primary_mode=ON
+group_replication_bootstrap_group=OFF
+group_replication_allow_local_disjoint_gtids_join=OFF
+
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
+report_port = 3306
