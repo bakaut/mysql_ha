@@ -1,0 +1,22 @@
+{
+  "service": {
+    "name": "mysql",
+    "tags": ["primary"],
+    "address": "",
+    "meta": {
+      "meta": "mysql"
+    },
+    "port": 3306,
+    "enable_tag_override": false,
+    "checks": [
+      {
+        "args": [ "/usr/bin/mysql","-h", "127.0.0.1","-p7,Agf5Cupp0E,","-u","root","-e", "SELECT 'SQL_RUN'"],
+        "interval": "10s"
+      }
+    ],
+    "weights": {
+      "passing": 3,
+      "warning": 2
+    }
+  }
+}
