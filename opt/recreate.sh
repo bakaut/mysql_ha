@@ -12,3 +12,15 @@ query="SET sql_log_bin=OFF;set global super_read_only=OFF;ALTER USER 'root'@'loc
 echo "${query}"
 mysql --connect-expired-password -p"${pass}" -e "${query}"
 systemctl restart mysqld
+
+
+#check it
+#cat << EOF | psql ---params
+#BEGIN;
+#
+#`pg_dump ----something`
+#
+#update table .... statement ...;
+#
+#END;
+#EOF
