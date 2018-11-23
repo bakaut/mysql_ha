@@ -4,7 +4,7 @@ systemctl stop mysqld
 rm -rf /var/lib/mysql/*
 > /var/log/mysqld.log
 systemctl start mysqld
-pass=`tail -10000 /var/log/mysqld.log | grep "temporary password" | awk '{print $13}'`
+pass=`tail -1000 /var/log/mysqld.log | grep "temporary password" | awk '{print $13}'`
 
 cat << EOF | mysql --connect-expired-password -p"${pass}"
 SET sql_log_bin=OFF;
